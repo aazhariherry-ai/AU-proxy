@@ -1,0 +1,9 @@
+{
+  "regions": ["syd1"],
+  "rewrites": [
+    {
+      "source": "/stream-australia/:id/playlist.m3u8",
+      "destination": "/api/play?id=:id"
+    }
+  ]
+}
