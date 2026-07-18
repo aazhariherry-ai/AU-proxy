@@ -1,5 +1,4 @@
 {
-  "regions": ["syd1"],
   "rewrites": [
     {
       "source": "/sbs/:id.m3u8",
