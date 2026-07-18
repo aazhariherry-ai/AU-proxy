@@ -1,9 +1,15 @@
 import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
-  // 1. Endpoint API Internal SBS untuk mendapatkan stream ber-token resmi
-  // SBS biasanya mendistribusikan token lewat API publik/internal mereka untuk aplikasi web/Android TV
-  const sbsApiUrl = "https://api.sbs.com.au/video/v1/stream/viceland?platform=androidtv";
+  // Mengambil parameter ID dari URL yang diketik user
+  const { id } = req.query; 
+
+  if (!id) {
+    return res.status(400).send('Missing channel ID');
+  }
+
+  // URL API sekarang otomatis berubah tergantung ID yang kamu masukkan di URL
+  const sbsApiUrl = `https://api.sbs.com.au/video/v1/stream/${id}?platform=androidtv`;
 
   try {
     // 2. Tembak API SBS menggunakan region 'syd1' (Sydney) yang sudah kita set di vercel.json
